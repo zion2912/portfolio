@@ -2,7 +2,7 @@ const projects = [
   {
     title: "Progressive Overload Journal",
     description: "A web app for tracking and monitoring workout progression over time. Log exercises, weights, and reps to visualize your fitness gains.",
-    tags: ["Web App", "Fitness", "Tracking"],
+    tags: ["Web App", "Fitness", " Data Tracking"],
     url: "https://myprogressiveoverloadjournal.com/"
   },
   {
