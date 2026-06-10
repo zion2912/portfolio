@@ -41,7 +41,7 @@ projects.forEach(project => {
   if (project.images && project.images.length > 0) {
     imagesHtml = `
       <div class="card-gallery">
-        ${project.images.map(img => `<img src="${img}" alt="${project.title}" class="card-image" />`).join('')}
+        ${project.images.map((img, idx) => `<img src="${img}" alt="${project.title}" class="card-image" data-img-index="${idx}" style="cursor: pointer;" />`).join('')}
       </div>
     `;
   }
@@ -58,4 +58,84 @@ projects.forEach(project => {
     </div>
   `;
   grid.appendChild(card);
+  
+  // Add click handlers to images for lightbox
+  if (project.images && project.images.length > 0) {
+    card.querySelectorAll('.card-image').forEach(img => {
+      img.addEventListener('click', () => {
+        const imgIdx = parseInt(img.getAttribute('data-img-index'));
+        openLightbox(project.images, imgIdx);
+      });
+    });
+  }
 });
+
+// Lightbox functionality
+let currentLightboxImages = [];
+let currentImageIndex = 0;
+
+function openLightbox(images, index) {
+  currentLightboxImages = images;
+  currentImageIndex = index;
+  
+  let lightbox = document.getElementById('lightbox');
+  if (!lightbox) {
+    lightbox = document.createElement('div');
+    lightbox.id = 'lightbox';
+    lightbox.className = 'lightbox';
+    lightbox.innerHTML = `
+      <div class="lightbox-content">
+        <button class="lightbox-close" aria-label="Close lightbox">&times;</button>
+        <button class="lightbox-prev" aria-label="Previous image">❮</button>
+        <img id="lightbox-image" src="" alt="Gallery image" class="lightbox-image" />
+        <button class="lightbox-next" aria-label="Next image">❯</button>
+        <div class="lightbox-counter"><span id="lightbox-counter"></span></div>
+      </div>
+    `;
+    document.body.appendChild(lightbox);
+    
+    lightbox.querySelector('.lightbox-close').addEventListener('click', closeLightbox);
+    lightbox.querySelector('.lightbox-prev').addEventListener('click', prevImage);
+    lightbox.querySelector('.lightbox-next').addEventListener('click', nextImage);
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) closeLightbox();
+    });
+    
+    document.addEventListener('keydown', (e) => {
+      if (lightbox.classList.contains('active')) {
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowLeft') prevImage();
+        if (e.key === 'ArrowRight') nextImage();
+      }
+    });
+  }
+  
+  updateLightboxImage();
+  lightbox.classList.add('active');
+}
+
+function closeLightbox() {
+  const lightbox = document.getElementById('lightbox');
+  if (lightbox) {
+    lightbox.classList.remove('active');
+  }
+}
+
+function nextImage() {
+  currentImageIndex = (currentImageIndex + 1) % currentLightboxImages.length;
+  updateLightboxImage();
+}
+
+function prevImage() {
+  currentImageIndex = (currentImageIndex - 1 + currentLightboxImages.length) % currentLightboxImages.length;
+  updateLightboxImage();
+}
+
+function updateLightboxImage() {
+  const lightboxImg = document.getElementById('lightbox-image');
+  const counter = document.getElementById('lightbox-counter');
+  if (lightboxImg) {
+    lightboxImg.src = currentLightboxImages[currentImageIndex];
+    counter.textContent = `${currentImageIndex + 1} / ${currentLightboxImages.length}`;
+  }
+}
