@@ -12,10 +12,14 @@ const projects = [
     ]
   },
   {
-    title: "Portfolio Website",
-    description: "A responsive portfolio site to showcase modern web projects with clean layout and animation-ready styling.",
-    tags: ["HTML", "CSS", "JavaScript"],
-    url: "#"
+    title: "Responsive Dashboards",
+    description: "Take a look at some of the responsive dashboards I created since learning how to use tableau at my summer internship in 2024",
+    tags: ["Tableau", "Visualizations", "Insights"],
+    url: "https://public.tableau.com/app/profile/zion.nicholls/vizzes",
+    images: [
+      "images/Screenshot 2026-06-11 145700.png",
+      "images/Screenshot 2026-06-11 150630.png"
+    ]
   },
   {
     title: "Task Tracker",
