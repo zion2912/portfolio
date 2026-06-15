@@ -23,11 +23,9 @@ const projects = [
   },
   {
     title: "Exam Performance Predictor",
-    description: "A machine learning model that predicts student performance on exams based on study habits, attendance, and past grades. My first attempt at machine learning, built using pandas and scikit-learn. The dataset and files can be found on my github page",
+    description: "A machine learning model that predicts student performance on exams based on study habits, attendance, and past grades. My first attempt at machine learning, built using pandas and scikit-learn. The dataset and files can be found on my github page, in the repository named 'Exam-Performance-Predictor'.",
     tags: ["Machine Learning", "Data Science", "Predictive Modeling"],
-    url: ["https://github.com/zionnicholls/exam-performance-predictor",
-      "https://exam-performance-predictor-edc24iddvqssjdsbcdlivc.streamlit.app/"
-    ],
+    url: ["https://exam-performance-predictor-edc24iddvqssjdsbcdlivc.streamlit.app/"],
     images: [
     "images/Screenshot 2026-06-15 140407.png",
     "images/Screenshot 2026-06-15 140431.png"
