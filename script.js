@@ -2,7 +2,7 @@ const projects = [
   {
     title: "Progressive Overload Journal",
     description: "A web app for tracking and monitoring workout progression over time. Log exercises, weights, and reps to visualize your fitness gains.",
-    tags: ["Web App", "Fitness", " Data Tracking"],
+    tags: ["JavaScript", "CSS", "Data Tracking","Data Storage"],
     url: "https://myprogressiveoverloadjournal.com/",
     images: [
       "images/processed-2533DF4C-EF79-4196-A91F-0C135B3DE286.jpeg",
@@ -14,7 +14,7 @@ const projects = [
   {
     title: "Responsive Dashboards",
     description: "Take a look at some of the responsive dashboards I created since learning how to use tableau at my summer internship in 2024",
-    tags: ["Tableau", "Visualizations", "Insights"],
+    tags: ["Analysis", "Visualizations", "Insights","Data Storytelling"],
     url: "https://public.tableau.com/app/profile/zion.nicholls/vizzes",
     images: [
       "images/Screenshot 2026-06-11 145700.png",
@@ -22,16 +22,14 @@ const projects = [
     ]
   },
   {
-    title: "Task Tracker",
-    description: "A small productivity app for tracking daily work, managing tasks, and keeping progress visible.",
-    tags: ["Web App", "UI", "Interaction"],
-    url: "#"
-  },
-  {
-    title: "Landing Page",
-    description: "A minimal landing page design for product launches, highlighting messaging, features, and calls to action.",
-    tags: ["Design", "Responsive", "Accessibility"],
-    url: "#"
+    title: "Exam Performance Predictor",
+    description: "A machine learning model that predicts student performance on exams based on study habits, attendance, and past grades. My first attempt at machine learning, built using pandas and scikit-learn. The dataset and files can be found on my github page, in the repository named 'Exam-Performance-Predictor'.",
+    tags: ["Machine Learning", "Data Science", "Predictive Modeling"],
+    url: ["https://exam-performance-predictor-edc24iddvqssjdsbcdlivc.streamlit.app/"],
+    images: [
+    "images/Screenshot 2026-06-15 140407.png",
+    "images/Screenshot 2026-06-15 140431.png"
+    ]
   }
 ];
 
@@ -57,7 +55,9 @@ projects.forEach(project => {
       <p>${project.description}</p>
       <div class="project-meta">
         <span>${project.tags.join(" · ")}</span>
-        <a href="${project.url}" aria-label="View ${project.title}">View project</a>
+        <div class="project-links">
+          ${Array.isArray(project.url) ? project.url.map((url) => `<a href="${url}" aria-label="View ${project.title}" target="_blank">View project</a>`).join('') : `<a href="${project.url}" aria-label="View ${project.title}" target="_blank">View project</a>`}
+        </div>
       </div>
     </div>
   `;
