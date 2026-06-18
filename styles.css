@@ -211,20 +211,24 @@ h2 {
 
 .lightbox-close {
   position: absolute;
-  top: -2.5rem;
-  right: 0;
-  background: none;
+  top: 1rem;
+  right: 1rem;
+  background: #dc2626;
   border: none;
   color: white;
-  font-size: 2.5rem;
+  font-size: 2rem;
   cursor: pointer;
-  padding: 0;
+  padding: 0.5rem 0.75rem;
   line-height: 1;
-  transition: opacity 200ms ease;
+  border-radius: 999px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+  transition: background 200ms ease, transform 200ms ease, opacity 200ms ease;
 }
 
 .lightbox-close:hover {
-  opacity: 0.7;
+  background: #ef4444;
+  transform: scale(1.05);
+  opacity: 0.95;
 }
 
 .lightbox-prev,
